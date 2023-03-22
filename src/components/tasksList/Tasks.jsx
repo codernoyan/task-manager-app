@@ -1,7 +1,25 @@
+import { useGetTasksQuery } from "../../features/tasks/tasksApi";
 import { Link } from "react-router-dom";
+import Error from "../ui/Error";
+import Loading from "../ui/Loading";
 import Task from "./Task";
 
 export default function Tasks() {
+  const { data: tasks, isLoading, isError, error } = useGetTasksQuery();
+
+  // let's decide what to render
+  let content = null;
+
+  if (isLoading) {
+    content = <Loading />
+  } else if (!isLoading && isError) {
+    content = <Error message={error?.data} />
+  } else if (!isLoading && !isError && tasks?.length === 0) {
+    content = <Error message="There is no tasks found!" />
+  } else if (!isLoading && !isError && tasks?.length > 0) {
+    content = tasks?.map((task) => <Task key={task.id} task={task} />)
+  }
+
   return (
     <main className="relative z-20 max-w-3xl mx-auto rounded-lg xl:max-w-none">
       <div className="justify-between mb-10 space-y-2 md:flex md:space-y-0">
@@ -13,7 +31,7 @@ export default function Tasks() {
         </Link>
       </div>
       <div className="lws-task-list">
-        <Task />
+        {content}
       </div>
     </main>
   )

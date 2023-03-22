@@ -1,17 +1,24 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Task() {
+export default function Task({ task }) {
+  const { id, taskName, teamMember, project, deadline, status } = task || {};
+  const { name, avatar } = teamMember || {};
+  const { projectName, colorClass } = project || {};
+
   const navigate = useNavigate();
   // edit task
   const handleEdiTask = () => {
-    navigate(`/edit-task/1`)
+    navigate(`/edit-task/${id}`)
   };
 
-  return(
+  const months = "January February March April May June July August September October November December";
+  const month = months.split(' ');
+
+  return (
     <div className="lws-task">
       <div className="flex items-center gap-2 text-slate">
-        <h2 className="lws-date">26</h2>
-        <h4 className="lws-month">March</h4>
+        <h2 className="lws-date">{new Date(deadline).getDay()}</h2>
+        <h4 className="lws-month">{month[new Date(deadline).getMonth()]}</h4>
       </div>
       <div className="lws-taskContainer">
         <h1 className="lws-task-title">Last over need 15 runs</h1>
