@@ -1,8 +1,9 @@
-export default function Member() {
-  return(
+export default function Member({ team }) {
+  const { name, avatar } = team || {};
+  return (
     <div className="checkbox-container">
-      <img src="./images/avatars/sumit.png" className="team-avater" />
-      <p className="label">Sumit Saha</p>
+      <img src={avatar} className="team-avater" />
+      <p className="label">{name}</p>
     </div>
   )
 }
