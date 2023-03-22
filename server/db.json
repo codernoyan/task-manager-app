@@ -151,6 +151,51 @@
       },
       "id": 5,
       "status": "completed"
+    },
+    {
+      "taskName": "Implement RTK query",
+      "teamMember": {
+        "name": "Akash Ahmed",
+        "avatar": "/images/avatars/akash.png",
+        "id": 3
+      },
+      "project": {
+        "id": 6,
+        "projectName": "Job Finder",
+        "colorClass": "color-jobFinder"
+      },
+      "deadline": "2023-03-18",
+      "id": 6
+    },
+    {
+      "taskName": "Socket.IO",
+      "teamMember": {
+        "name": "Sumit Saha",
+        "avatar": "/images/avatars/sumit.png",
+        "id": 1
+      },
+      "project": {
+        "id": 2,
+        "projectName": "Flight Booking",
+        "colorClass": "color-flight"
+      },
+      "deadline": "2023-04-05",
+      "id": 7
+    },
+    {
+      "taskName": "Redux Toolkit",
+      "teamMember": {
+        "name": "Md Salahuddin",
+        "avatar": "/images/avatars/salahuddin.png",
+        "id": 4
+      },
+      "project": {
+        "id": 4,
+        "projectName": "Book Store",
+        "colorClass": "color-bookstore"
+      },
+      "deadline": "2023-05-26",
+      "id": 8
     }
   ]
 }
