@@ -170,32 +170,17 @@
     {
       "taskName": "Socket.IO",
       "teamMember": {
-        "name": "Sumit Saha",
-        "avatar": "/images/avatars/sumit.png",
-        "id": 1
+        "name": "Riyadh Hassan",
+        "avatar": "/images/avatars/riyadh.png",
+        "id": 5
       },
       "project": {
-        "id": 2,
-        "projectName": "Flight Booking",
-        "colorClass": "color-flight"
+        "id": 5,
+        "projectName": "Blog Application",
+        "colorClass": "color-blog"
       },
-      "deadline": "2023-04-05",
+      "deadline": "2023-04-01",
       "id": 7
-    },
-    {
-      "taskName": "Redux Toolkit",
-      "teamMember": {
-        "name": "Md Salahuddin",
-        "avatar": "/images/avatars/salahuddin.png",
-        "id": 4
-      },
-      "project": {
-        "id": 4,
-        "projectName": "Book Store",
-        "colorClass": "color-bookstore"
-      },
-      "deadline": "2023-05-26",
-      "id": 8
     }
   ]
 }

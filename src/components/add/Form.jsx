@@ -27,13 +27,8 @@ export default function Form() {
       project: JSON.parse(project),
       deadline,
     });
+    navigate('/');
   };
-
-  useEffect(() => {
-    if (isSuccess) {
-      navigate('/');
-    }
-  }, [isSuccess])
 
   return (
     <>
