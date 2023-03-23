@@ -242,7 +242,8 @@
         "colorClass": "color-scoreboard"
       },
       "deadline": "2023-04-05",
-      "id": 12
+      "id": 12,
+      "status": "completed"
     }
   ]
 }
