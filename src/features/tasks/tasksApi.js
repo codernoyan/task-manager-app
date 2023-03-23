@@ -40,12 +40,13 @@ export const tasksApi = apiSlice.injectEndpoints({
         body: data,
       }),
       // pessimistic update for edit
-      async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
+      async onQueryStarted({ id, data }, { dispatch, queryFulfilled }) {
         try {
+          // console.log(id, data)
           const { data: taskData } = await queryFulfilled;
-          // console.log(id);
+          // console.log(id, taskData);
           dispatch(apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
-            console.log(JSON.stringify(draft));
+            // console.log(JSON.stringify(draft));
             const indexToUpdate = draft?.findIndex((task) => task.id === id);
             draft[indexToUpdate] = { ...taskData, status: taskData.status };
           }))

@@ -1,4 +1,4 @@
-import { useDeleteTaskMutation } from "../../features/tasks/tasksApi";
+import { useDeleteTaskMutation, useEditTaskMutation } from "../../features/tasks/tasksApi";
 import { useNavigate } from "react-router-dom";
 
 export default function Task({ task }) {
@@ -6,7 +6,9 @@ export default function Task({ task }) {
   const { name: teamMemberName, avatar } = teamMember || {};
   const { projectName, colorClass } = project || {};
   const [deleteTask, { isLoading, isError, error }] = useDeleteTaskMutation();
+  const [editTask] = useEditTaskMutation();
   const navigate = useNavigate();
+
   // edit task
   const handleEdiTask = () => {
     navigate(`/edit-task/${id}`);
@@ -14,6 +16,15 @@ export default function Task({ task }) {
 
   const handleDelete = () => {
     deleteTask(id);
+  };
+
+  const handleStatusChange = (e) => {
+    console.log(e.target.value);
+    editTask({
+      id, data: {
+        status: e.target.value
+      }
+    })
   }
 
   const months = "January February March April May June July August September October November December";
@@ -53,10 +64,10 @@ export default function Task({ task }) {
 
         {/* edit button */}
 
-        <select className="lws-status">
+        <select onChange={handleStatusChange} value={status} className="lws-status">
           <option value="pending" defaultValue>Pending</option>
           <option value="inProgress">In Progress</option>
-          <option value="complete">Completed</option>
+          <option value="completed">Completed</option>
         </select>
       </div>
     </div>
