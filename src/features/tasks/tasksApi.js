@@ -18,6 +18,7 @@ export const tasksApi = apiSlice.injectEndpoints({
         method: 'POST',
         body: data,
       }),
+      // pessimistic update
       async onQueryStarted({ data }, { dispatch, queryFulfilled }) {
         try {
           const taskData = await queryFulfilled;
@@ -44,10 +45,10 @@ export const tasksApi = apiSlice.injectEndpoints({
         url: `/tasks/${id}`,
         method: 'DELETE',
       }),
+      // optimistic update
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         const patchResult = dispatch(apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
-          const newDraft = draft.data.filter((data) => data.id !== id);
-          draft.data = newDraft;
+          draft.filter((data) => data.id != id);
         }))
         try {
           const tasks = await queryFulfilled;
