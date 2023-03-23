@@ -1,42 +1,69 @@
-export default function Form() {
+import { useGetProjectsQuery } from "../../features/projects/projectsApi";
+import { useEditTaskMutation } from "../../features/tasks/tasksApi";
+import { useGetTeamQuery } from "../../features/team/teamApi";
+import { useNavigate } from "react-router-dom";
+import Error from "../ui/Error";
+import { useState } from "react";
+
+export default function Form({ task }) {
+  const { data: team } = useGetTeamQuery();
+  const { data: projects } = useGetProjectsQuery();
+  const [editTask, { isLoading, isError, error, isSuccess }] = useEditTaskMutation();
+  const navigate = useNavigate();
+
+  const { id, taskName, teamMember, project, deadline } = task || {};
+
+  const [input, setInput] = useState({
+    id,
+    taskName,
+    teamMember,
+    project,
+    deadline,
+  });
+
+  console.log(input);
+
+  const handleEditTask = () => {
+    e.preventDefault();
+  }
+
   return (
-    <form className="space-y-6">
-      <div className="fieldContainer">
-        <label htmlFor="lws-taskName">Task Name</label>
-        <input type="text" name="taskName" id="lws-taskName" required placeholder="Implement RTK Query" />
-      </div>
-      <div className="fieldContainer">
-        <label>Assign To</label>
-        <select name="teamMember" id="lws-teamMember" required>
-          <option value hidden selected>Select Job</option>
-          <option>Sumit Saha</option>
-          <option>Sadh Hasan</option>
-          <option>Akash Ahmed</option>
-          <option>Md Salahuddin</option>
-          <option>Riyadh Hassan</option>
-          <option>Ferdous Hassan</option>
-          <option>Arif Almas</option>
-        </select>
-      </div>
-      <div className="fieldContainer">
-        <label htmlFor="lws-projectName">Project Name</label>
-        <select id="lws-projectName" name="projectName" required>
-          <option value hidden selected>Select Project</option>
-          <option>Scoreboard</option>
-          <option>Flight Booking</option>
-          <option>Product Cart</option>
-          <option>Book Store</option>
-          <option>Blog Application</option>
-          <option>Job Finder</option>
-        </select>
-      </div>
-      <div className="fieldContainer">
-        <label htmlFor="lws-deadline">Deadline</label>
-        <input type="date" name="deadline" id="lws-deadline" required />
-      </div>
-      <div className="text-right">
-        <button type="submit" className="lws-submit">Edit</button>
-      </div>
-    </form>
+    <>
+      <form onSubmit={handleEditTask} className="space-y-6">
+        <div className="fieldContainer">
+          <label htmlFor="lws-taskName">Task Name</label>
+          <input onChange={(e) => setInput({ ...input, taskName: e.target.value })} type="text" name="taskName" id="lws-taskName" required placeholder="Implement RTK Query" value={input.taskName} />
+        </div>
+        <div className="fieldContainer">
+          <label>Assign To</label>
+          <select name="teamMember" id="lws-teamMember" required
+            onChange={(e) => setInput({ ...input, teamMember: e.target.value })} value={input.teamMember}>
+            <option value hidden defaultValue>Select Job</option>
+            {
+              team?.map((t) => <option key={t.id} value={JSON.stringify(t)}>{t.name}</option>)
+            }
+          </select>
+        </div>
+        <div className="fieldContainer">
+          <label htmlFor="lws-projectName">Project Name</label>
+          <select id="lws-projectName" name="projectName" required onChange={(e) => setInput({ ...input, project: e.target.value })} value={input.project}>
+            <option value hidden defaultValue>Select Project</option>
+            {
+              projects?.map((project) => <option key={project.id} value={JSON.stringify(project)}>{project.projectName}</option>)
+            }
+          </select>
+        </div>
+        <div className="fieldContainer">
+          <label htmlFor="lws-deadline">Deadline</label>
+          <input onChange={(e) => setInput({ ...input, deadline: e.target.value })} type="date" name="deadline" id="lws-deadline" required value={input.deadline} />
+        </div>
+        <div className="text-right">
+          <button disabled={isLoading} type="submit" className="lws-submit">Edit</button>
+        </div>
+      </form>
+      {
+        error?.data && <Error message={error?.data} />
+      }
+    </>
   )
 }

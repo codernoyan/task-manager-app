@@ -44,6 +44,17 @@ export const tasksApi = apiSlice.injectEndpoints({
         url: `/tasks/${id}`,
         method: 'DELETE',
       }),
+      async onQueryStarted(id, { dispatch, queryFulfilled }) {
+        const patchResult = dispatch(apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
+          const newDraft = draft.data.filter((data) => data.id !== id);
+          draft.data = newDraft;
+        }))
+        try {
+          const tasks = await queryFulfilled;
+        } catch (err) {
+          patchResult.undo();
+        }
+      }
     }),
   }),
 });

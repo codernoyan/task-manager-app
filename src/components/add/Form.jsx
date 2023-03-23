@@ -12,6 +12,7 @@ export default function Form() {
     project: {},
     deadline: '',
   });
+  
   const { data: team } = useGetTeamQuery();
   const { data: projects } = useGetProjectsQuery();
   const [addTask, { isLoading, isError, error, isSuccess }] = useAddTaskMutation();

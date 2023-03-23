@@ -153,6 +153,21 @@
       "status": "completed"
     },
     {
+      "taskName": "book store",
+      "teamMember": {
+        "name": "Sumit Saha",
+        "avatar": "/images/avatars/sumit.png",
+        "id": 1
+      },
+      "project": {
+        "id": 2,
+        "projectName": "Flight Booking",
+        "colorClass": "color-flight"
+      },
+      "deadline": "2023-04-06",
+      "id": 6
+    },
+    {
       "taskName": "Implement RTK query",
       "teamMember": {
         "name": "Akash Ahmed",
@@ -160,27 +175,27 @@
         "id": 3
       },
       "project": {
-        "id": 6,
-        "projectName": "Job Finder",
-        "colorClass": "color-jobFinder"
+        "id": 3,
+        "projectName": "Product Cart",
+        "colorClass": "color-productCart"
       },
-      "deadline": "2023-03-18",
-      "id": 6
+      "deadline": "2023-03-23",
+      "id": 7
     },
     {
       "taskName": "Socket.IO",
       "teamMember": {
-        "name": "Riyadh Hassan",
-        "avatar": "/images/avatars/riyadh.png",
-        "id": 5
+        "name": "Akash Ahmed",
+        "avatar": "/images/avatars/akash.png",
+        "id": 3
       },
       "project": {
-        "id": 5,
-        "projectName": "Blog Application",
-        "colorClass": "color-blog"
+        "id": 3,
+        "projectName": "Product Cart",
+        "colorClass": "color-productCart"
       },
-      "deadline": "2023-04-01",
-      "id": 7
+      "deadline": "2023-04-08",
+      "id": 8
     }
   ]
 }
