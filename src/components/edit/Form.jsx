@@ -16,15 +16,16 @@ export default function Form({ task }) {
   const [input, setInput] = useState({
     id,
     taskName,
-    teamMember,
-    project,
+    teamMember: JSON.stringify(teamMember),
+    project: JSON.stringify(project),
     deadline,
   });
 
-  console.log(input);
+  // console.log(input);
 
-  const handleEditTask = () => {
+  const handleEditTask = (e) => {
     e.preventDefault();
+    console.log(input);
   }
 
   return (
@@ -40,7 +41,8 @@ export default function Form({ task }) {
             onChange={(e) => setInput({ ...input, teamMember: e.target.value })} value={input.teamMember}>
             <option value hidden defaultValue>Select Job</option>
             {
-              team?.map((t) => <option key={t.id} value={JSON.stringify(t)}>{t.name}</option>)
+              team?.map((selectedTeam) => <option key={selectedTeam?.id} value={JSON.stringify(selectedTeam)}>{selectedTeam?.name}
+              </option>)
             }
           </select>
         </div>
@@ -49,7 +51,9 @@ export default function Form({ task }) {
           <select id="lws-projectName" name="projectName" required onChange={(e) => setInput({ ...input, project: e.target.value })} value={input.project}>
             <option value hidden defaultValue>Select Project</option>
             {
-              projects?.map((project) => <option key={project.id} value={JSON.stringify(project)}>{project.projectName}</option>)
+              projects?.map((project) => <option key={project?.id} value={JSON.stringify(project)}>
+                {project?.projectName}
+              </option>)
             }
           </select>
         </div>
