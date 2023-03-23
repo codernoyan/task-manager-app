@@ -1,15 +1,21 @@
 import { searchTitle } from '../../features/filtersSlice/filtersSlice';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useMatch, useNavigate } from 'react-router-dom';
 import logoImage from '../../assets/images/logo.svg';
 
 export default function Navbar() {
   const [search, setSearch] = useState('');
+  const match = useMatch('/');
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
-      dispatch(searchTitle(search))
+      dispatch(searchTitle(search));
+      if (!match) {
+        navigate('/');
+      }
     }
   }
   return (

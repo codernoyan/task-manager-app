@@ -175,9 +175,9 @@
         "id": 5
       },
       "project": {
-        "id": 5,
-        "projectName": "Blog Application",
-        "colorClass": "color-blog"
+        "id": 6,
+        "projectName": "Job Finder",
+        "colorClass": "color-jobFinder"
       },
       "deadline": "2023-03-31",
       "id": 8,
@@ -196,26 +196,11 @@
         "colorClass": "color-productCart"
       },
       "deadline": "2023-03-21",
-      "id": 9
+      "id": 9,
+      "status": "completed"
     },
     {
-      "taskName": "scroreboard app",
-      "teamMember": {
-        "name": "Saad Hasan",
-        "avatar": "/images/avatars/sadh.png",
-        "id": 2
-      },
-      "project": {
-        "id": 4,
-        "projectName": "Book Store",
-        "colorClass": "color-bookstore"
-      },
-      "deadline": "2023-04-06",
-      "id": 10,
-      "status": "inProgress"
-    },
-    {
-      "taskName": "Socket.IO websocket WebRtc",
+      "taskName": "Socket.IO websocket WebRTC",
       "teamMember": {
         "name": "Arif Almas",
         "avatar": "/images/avatars/almas.png",
@@ -237,13 +222,13 @@
         "id": 3
       },
       "project": {
-        "id": 1,
-        "projectName": "Scoreboard",
-        "colorClass": "color-scoreboard"
+        "id": 5,
+        "projectName": "Blog Application",
+        "colorClass": "color-blog"
       },
       "deadline": "2023-04-05",
       "id": 12,
-      "status": "completed"
+      "status": "inProgress"
     }
   ]
 }
