@@ -22,7 +22,7 @@ export default function Task({ task }) {
   return (
     <div className="lws-task">
       <div className="flex items-center gap-2 text-slate">
-        <h2 className="lws-date">{new Date(deadline).getDate()}</h2>
+        <h2 className="lws-date">{new Date(deadline).getDate() < 10 ? `0${new Date(deadline).getDate()}` : new Date(deadline).getDate()}</h2>
         <h4 className="lws-month">{month[new Date(deadline).getMonth()]}</h4>
       </div>
       <div className="lws-taskContainer">

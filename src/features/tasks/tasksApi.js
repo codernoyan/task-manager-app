@@ -18,7 +18,7 @@ export const tasksApi = apiSlice.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-      // pessimistic update
+      // pessimistic update for add
       async onQueryStarted({ data }, { dispatch, queryFulfilled }) {
         try {
           const taskData = await queryFulfilled;
@@ -38,7 +38,21 @@ export const tasksApi = apiSlice.injectEndpoints({
         url: `/tasks/${id}`,
         method: 'PATCH',
         body: data,
-      })
+      }),
+      // pessimistic update for edit
+      async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
+        try {
+          const { data: taskData } = await queryFulfilled;
+          // console.log(id);
+          dispatch(apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
+            console.log(JSON.stringify(draft));
+            const indexToUpdate = draft?.findIndex((task) => task.id === id);
+            draft[indexToUpdate] = { ...taskData, status: taskData.status };
+          }))
+        } catch (err) {
+          console.log(err?.message)
+        }
+      }
     }),
     deleteTask: builder.mutation({
       query: (id) => ({

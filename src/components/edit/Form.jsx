@@ -9,10 +9,10 @@ export default function Form({ task }) {
   const { data: team } = useGetTeamQuery();
   const { data: projects } = useGetProjectsQuery();
   const [editTask, { isLoading, isError, error, isSuccess }] = useEditTaskMutation();
+  const { id, taskName, teamMember, project, deadline } = task || {};
   const navigate = useNavigate();
 
-  const { id, taskName, teamMember, project, deadline } = task || {};
-
+  // edit form state
   const [input, setInput] = useState({
     id,
     taskName,
@@ -25,7 +25,17 @@ export default function Form({ task }) {
 
   const handleEditTask = (e) => {
     e.preventDefault();
-    console.log(input);
+    editTask({
+      id: id,
+      data: {
+        id: input.id,
+        taskName: input.taskName,
+        teamMember: JSON.parse(input.teamMember),
+        project: JSON.parse(input.project),
+        deadline: input.deadline
+      }
+    });
+    navigate('/');
   }
 
   return (
@@ -39,7 +49,7 @@ export default function Form({ task }) {
           <label>Assign To</label>
           <select name="teamMember" id="lws-teamMember" required
             onChange={(e) => setInput({ ...input, teamMember: e.target.value })} value={input.teamMember}>
-            <option value hidden defaultValue>Select Job</option>
+            <option value hidden defaultValue>Select Member</option>
             {
               team?.map((selectedTeam) => <option key={selectedTeam?.id} value={JSON.stringify(selectedTeam)}>{selectedTeam?.name}
               </option>)

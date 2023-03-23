@@ -153,7 +153,7 @@
       "status": "completed"
     },
     {
-      "taskName": "book store",
+      "taskName": "Book Store",
       "teamMember": {
         "name": "Md Salahuddin",
         "avatar": "/images/avatars/salahuddin.png",
@@ -185,9 +185,9 @@
     {
       "taskName": "Socket.IO",
       "teamMember": {
-        "name": "Riyadh Hassan",
-        "avatar": "/images/avatars/riyadh.png",
-        "id": 5
+        "name": "Akash Ahmed",
+        "avatar": "/images/avatars/akash.png",
+        "id": 3
       },
       "project": {
         "id": 3,
@@ -200,9 +200,9 @@
     {
       "taskName": "scroreboard app",
       "teamMember": {
-        "name": "Sumit Saha",
-        "avatar": "/images/avatars/sumit.png",
-        "id": 1
+        "name": "Saad Hasan",
+        "avatar": "/images/avatars/sadh.png",
+        "id": 2
       },
       "project": {
         "id": 4,
@@ -211,6 +211,21 @@
       },
       "deadline": "2023-04-06",
       "id": 10
+    },
+    {
+      "taskName": "Socket.IO websocket WebRtc",
+      "teamMember": {
+        "name": "Ferdous Hassan",
+        "avatar": "/images/avatars/ferdous.png",
+        "id": 6
+      },
+      "project": {
+        "id": 4,
+        "projectName": "Book Store",
+        "colorClass": "color-bookstore"
+      },
+      "deadline": "2023-04-19",
+      "id": 11
     }
   ]
 }
