@@ -72,7 +72,7 @@ export default function Form({ task }) {
           <input onChange={(e) => setInput({ ...input, deadline: e.target.value })} type="date" name="deadline" id="lws-deadline" required value={input.deadline} />
         </div>
         <div className="text-right">
-          <button disabled={isLoading} type="submit" className="lws-submit">Edit</button>
+          <button disabled={isLoading} type="submit" className="lws-submit">Save</button>
         </div>
       </form>
       {

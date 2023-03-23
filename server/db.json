@@ -100,7 +100,7 @@
       "deadline": "2023-03-23",
       "id": 2,
       "projectName": "Scoreboard",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "taskName": "Task Three",
@@ -116,7 +116,7 @@
       },
       "deadline": "2023-03-03",
       "id": 3,
-      "status": "inProgress"
+      "status": "pending"
     },
     {
       "taskName": "New Task",
@@ -150,14 +150,14 @@
         "colorClass": "color-bookstore"
       },
       "id": 5,
-      "status": "completed"
+      "status": "inProgress"
     },
     {
       "taskName": "Book Store",
       "teamMember": {
-        "name": "Md Salahuddin",
-        "avatar": "/images/avatars/salahuddin.png",
-        "id": 4
+        "name": "Arif Almas",
+        "avatar": "/images/avatars/almas.png",
+        "id": 7
       },
       "project": {
         "id": 3,
@@ -170,9 +170,9 @@
     {
       "taskName": "Redux Toolkit",
       "teamMember": {
-        "name": "Md Salahuddin",
-        "avatar": "/images/avatars/salahuddin.png",
-        "id": 4
+        "name": "Riyadh Hassan",
+        "avatar": "/images/avatars/riyadh.png",
+        "id": 5
       },
       "project": {
         "id": 5,
@@ -180,7 +180,8 @@
         "colorClass": "color-blog"
       },
       "deadline": "2023-03-31",
-      "id": 8
+      "id": 8,
+      "status": "inProgress"
     },
     {
       "taskName": "Socket.IO",
@@ -210,14 +211,15 @@
         "colorClass": "color-bookstore"
       },
       "deadline": "2023-04-06",
-      "id": 10
+      "id": 10,
+      "status": "inProgress"
     },
     {
       "taskName": "Socket.IO websocket WebRtc",
       "teamMember": {
-        "name": "Ferdous Hassan",
-        "avatar": "/images/avatars/ferdous.png",
-        "id": 6
+        "name": "Arif Almas",
+        "avatar": "/images/avatars/almas.png",
+        "id": 7
       },
       "project": {
         "id": 6,
@@ -230,16 +232,16 @@
     {
       "taskName": "Implement RTK query index",
       "teamMember": {
-        "name": "Riyadh Hassan",
-        "avatar": "/images/avatars/riyadh.png",
-        "id": 5
+        "name": "Akash Ahmed",
+        "avatar": "/images/avatars/akash.png",
+        "id": 3
       },
       "project": {
-        "id": 6,
-        "projectName": "Job Finder",
-        "colorClass": "color-jobFinder"
+        "id": 1,
+        "projectName": "Scoreboard",
+        "colorClass": "color-scoreboard"
       },
-      "deadline": "2023-04-08",
+      "deadline": "2023-04-05",
       "id": 12
     }
   ]
