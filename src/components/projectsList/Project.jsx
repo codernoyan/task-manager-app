@@ -1,8 +1,21 @@
+import { filterProject } from "../../features/filtersSlice/filtersSlice";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
 export default function Project({ project }) {
   const { projectName, colorClass } = project || {};
+  const [projecCheked, setProjectChecked] = useState(true);
+  const dispatch = useDispatch();
+
+  const handleFilterProject = (e) => {
+    setProjectChecked(e.target.checked)
+    console.log(projectName)
+    dispatch(filterProject(projectName))
+  }
+
   return (
     <div className="checkbox-container">
-      <input type="checkbox" className={colorClass} defaultChecked />
+      <input onChange={handleFilterProject} checked={projecCheked} type="checkbox" className={colorClass} />
       <p className="label">{projectName}</p>
     </div>
   )

@@ -220,12 +220,27 @@
         "id": 6
       },
       "project": {
-        "id": 4,
-        "projectName": "Book Store",
-        "colorClass": "color-bookstore"
+        "id": 6,
+        "projectName": "Job Finder",
+        "colorClass": "color-jobFinder"
       },
       "deadline": "2023-04-19",
       "id": 11
+    },
+    {
+      "taskName": "Implement RTK query index",
+      "teamMember": {
+        "name": "Riyadh Hassan",
+        "avatar": "/images/avatars/riyadh.png",
+        "id": 5
+      },
+      "project": {
+        "id": 6,
+        "projectName": "Job Finder",
+        "colorClass": "color-jobFinder"
+      },
+      "deadline": "2023-04-08",
+      "id": 12
     }
   ]
 }
