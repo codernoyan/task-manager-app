@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function Tasks() {
   const { data: tasks, isLoading, isError, error } = useGetTasksQuery();
-  const { filteredProjects } = useSelector((state) => state.filters);
+  const { filteredProjects, searchText } = useSelector((state) => state.filters);
   // filter by projects
   const filterTasksByProjectName = (task) => {
     const { project } = task || {};
@@ -23,6 +23,15 @@ export default function Tasks() {
     }
   };
 
+  // search
+  const filterTaskByTaskName = (task) => {
+    if (task.taskName.toLowerCase().includes(searchText.toLowerCase())) {
+      return true;
+    } else if (searchText === '') {
+      return true;
+    }
+    return false;
+  }
 
   // let's decide what to render
   let content = null;
@@ -34,7 +43,7 @@ export default function Tasks() {
   } else if (!isLoading && !isError && tasks?.length === 0) {
     content = <Error message="There is no tasks found!" />
   } else if (!isLoading && !isError && tasks?.length > 0) {
-    content = tasks.filter(filterTasksByProjectName).map((task) => <Task key={task.id} task={task} />)
+    content = tasks.filter(filterTasksByProjectName).filter(filterTaskByTaskName).map((task) => <Task key={task.id} task={task} />)
   }
 
   return (
