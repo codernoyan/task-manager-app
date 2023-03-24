@@ -12,7 +12,7 @@ export default function Projects() {
   if (isLoading) {
     content = <Loading />
   } else if (!isLoading && isError) {
-    content = <Error message={error?.data} />
+    content = <Error message={error?.error} />
   } else if (!isLoading && !isError && projects?.length === 0) {
     content = <Error message="There is no projects found!" />
   } else if (!isLoading && !isError && projects?.length > 0) {

@@ -8,9 +8,9 @@ import { useState } from "react";
 export default function Form({ task }) {
   const { data: team } = useGetTeamQuery();
   const { data: projects } = useGetProjectsQuery();
-  const [editTask, { isLoading, isError, error, isSuccess }] = useEditTaskMutation();
-  const { id, taskName, teamMember, project, deadline } = task || {};
+  const [editTask, { isLoading, isError, error }] = useEditTaskMutation();
   const navigate = useNavigate();
+  const { id, taskName, teamMember, project, deadline } = task || {};
 
   // edit form state
   const [input, setInput] = useState({
@@ -20,8 +20,6 @@ export default function Form({ task }) {
     project: JSON.stringify(project),
     deadline,
   });
-
-  // console.log(input);
 
   const handleEditTask = (e) => {
     e.preventDefault();
@@ -76,7 +74,7 @@ export default function Form({ task }) {
         </div>
       </form>
       {
-        error?.data && <Error message={error?.data} />
+        isError && <Error message={error?.error} />
       }
     </>
   )

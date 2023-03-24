@@ -11,9 +11,9 @@ export default function Members() {
   if (isLoading) {
     content = <Loading />
   } else if (!isLoading && isError) {
-    content = <Error message={error?.data} />
+    content = <Error message={error?.error} />
   } else if (!isLoading && !isError && members?.length === 0) {
-    content = <Error message="There is no projects found!" />
+    content = <Error message="There is no members found!" />
   } else if (!isLoading && !isError && members?.length > 0) {
     content = members?.map((team) => <Member key={team.id} team={team} />)
   };

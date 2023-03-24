@@ -1,6 +1,6 @@
 import { useGetProjectsQuery } from "../../features/projects/projectsApi";
 import { useGetTeamQuery } from "../../features/team/teamApi";
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useAddTaskMutation } from "../../features/tasks/tasksApi";
 import { useNavigate } from "react-router-dom";
 import Error from "../ui/Error";
@@ -8,20 +8,28 @@ import Error from "../ui/Error";
 export default function Form() {
   const [input, setInput] = useState({
     taskName: '',
-    teamMember: {},
-    project: {},
+    teamMember: '',
+    project: '',
     deadline: '',
   });
-  
+  const [selectError, setSelectError] = useState('');
+
   const { data: team } = useGetTeamQuery();
   const { data: projects } = useGetProjectsQuery();
-  const [addTask, { isLoading, isError, error, isSuccess }] = useAddTaskMutation();
+  const [addTask, { isLoading, isError, error }] = useAddTaskMutation();
   const navigate = useNavigate();
 
   const handleAddTask = (e) => {
     e.preventDefault();
+    setSelectError('');
+    if (input.teamMember === '') {
+      return setSelectError('Please select a member');
+    } else if (input.project === '') {
+      return setSelectError('Please select a project');
+    } else {
+      setSelectError('');
+    }
     const { taskName, teamMember, project, deadline } = input || {};
-    console.log(deadline)
     addTask({
       taskName,
       teamMember: JSON.parse(teamMember),
@@ -42,7 +50,7 @@ export default function Form() {
           <label>Assign To</label>
           <select name="teamMember" id="lws-teamMember" required
             onChange={(e) => setInput({ ...input, teamMember: e.target.value })} value={input.teamMember}>
-            <option value hidden defaultValue>Select Job</option>
+            <option value hidden defaultValue>Select Member</option>
             {
               team?.map((t) => <option key={t.id} value={JSON.stringify(t)}>{t.name}</option>)
             }
@@ -50,7 +58,8 @@ export default function Form() {
         </div>
         <div className="fieldContainer">
           <label htmlFor="lws-projectName">Project Name</label>
-          <select id="lws-projectName" name="projectName" required onChange={(e) => setInput({ ...input, project: e.target.value })} value={input.project}>
+          <select id="lws-projectName" name="projectName" required
+            onChange={(e) => setInput({ ...input, project: e.target.value })} value={input.project}>
             <option value hidden defaultValue>Select Project</option>
             {
               projects?.map((project) => <option key={project.id} value={JSON.stringify(project)}>{project.projectName}</option>)
@@ -64,9 +73,12 @@ export default function Form() {
         <div className="text-right">
           <button disabled={isLoading} type="submit" className="lws-submit">Save</button>
         </div>
+        {
+          selectError && <Error message={selectError} />
+        }
       </form>
       {
-        error?.data && <Error />
+        isError && <Error message={error?.error} />
       }
     </>
   )

@@ -9,7 +9,6 @@ export default function Project({ project }) {
 
   const handleFilterProject = (e) => {
     setProjectChecked(e.target.checked)
-    console.log(projectName)
     dispatch(filterProject(projectName))
   }
 

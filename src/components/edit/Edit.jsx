@@ -6,7 +6,7 @@ import Error from "../ui/Error";
 
 export default function Edit() {
   const { taskId: id } = useParams();
-  const { data: task, isLoading, isError, error, isSuccess } = useGetTaskQuery(id);
+  const { data: task, isLoading, isError, error } = useGetTaskQuery(id);
 
   // let's decide what to render
   let content = null;
@@ -14,11 +14,11 @@ export default function Edit() {
   if (isLoading) {
     content = <Loading />
   } else if (!isLoading && isError) {
-    content = <Error message={error?.data} />
+    content = <Error message={error?.error} />
   } else if (!isLoading && !isError && Object.keys(task)?.length === 0) {
     content = <Error message="There is no task found!" />
   } else if (!isLoading && !isError && Object.keys(task)?.length > 0) {
-    content = <Form task={task} isSuccess={isSuccess} />
+    content = <Form task={task} />
   }
 
   return (

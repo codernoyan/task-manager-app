@@ -39,7 +39,7 @@ export default function Tasks() {
   if (isLoading) {
     content = <Loading />
   } else if (!isLoading && isError) {
-    content = <Error message={error?.data} />
+    content = <Error message={error?.error} />
   } else if (!isLoading && !isError && tasks?.length === 0) {
     content = <Error message="There is no tasks found!" />
   } else if (!isLoading && !isError && tasks?.length > 0) {
