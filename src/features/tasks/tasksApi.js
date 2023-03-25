@@ -43,9 +43,14 @@ export const tasksApi = apiSlice.injectEndpoints({
       async onQueryStarted({ id, data }, { dispatch, queryFulfilled }) {
         try {
           const { data: taskData } = await queryFulfilled;
+          // silently refetch all data
           dispatch(apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
             const indexToUpdate = draft?.findIndex((task) => task.id === id);
             draft[indexToUpdate] = { ...taskData, status: taskData.status };
+          }))
+          // silently update a single task data
+          dispatch(apiSlice.util.updateQueryData('getTask', id.toString(), (draft) => {
+            return draft = { ...taskData, status: taskData.status };
           }))
         } catch (err) {
           console.log(err?.message)

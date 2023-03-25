@@ -168,7 +168,7 @@
       "id": 7
     },
     {
-      "taskName": "Redux Toolkit",
+      "taskName": "Redux Toolkit App",
       "teamMember": {
         "name": "Riyadh Hassan",
         "avatar": "/images/avatars/riyadh.png",
@@ -200,7 +200,7 @@
       "status": "completed"
     },
     {
-      "taskName": "Socket.IO websocket WebRTC",
+      "taskName": "Socket.IO WebRTC",
       "teamMember": {
         "name": "Arif Almas",
         "avatar": "/images/avatars/almas.png",
@@ -215,7 +215,7 @@
       "id": 11
     },
     {
-      "taskName": "Lws Blog Application",
+      "taskName": "LWS Blog Application App",
       "teamMember": {
         "name": "Saad Hasan",
         "avatar": "/images/avatars/sadh.png",
@@ -228,21 +228,6 @@
       },
       "deadline": "2023-03-29",
       "id": 12
-    },
-    {
-      "taskName": "new redux app",
-      "teamMember": {
-        "name": "Akash Ahmed",
-        "avatar": "/images/avatars/akash.png",
-        "id": 3
-      },
-      "project": {
-        "id": 5,
-        "projectName": "Blog Application",
-        "colorClass": "color-blog"
-      },
-      "deadline": "2023-03-29",
-      "id": 13
     }
   ]
 }
