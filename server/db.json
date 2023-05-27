@@ -184,7 +184,7 @@
       "status": "inProgress"
     },
     {
-      "taskName": "Socket.IO",
+      "taskName": "Socket.IO with Redux",
       "teamMember": {
         "name": "Akash Ahmed",
         "avatar": "/images/avatars/akash.png",
@@ -197,10 +197,10 @@
       },
       "deadline": "2023-03-21",
       "id": 9,
-      "status": "completed"
+      "status": "inProgress"
     },
     {
-      "taskName": "Socket.IO WebRTC",
+      "taskName": "Socket.IO WebRTC Redux",
       "teamMember": {
         "name": "Arif Almas",
         "avatar": "/images/avatars/almas.png",
@@ -227,7 +227,8 @@
         "colorClass": "color-blog"
       },
       "deadline": "2023-03-29",
-      "id": 12
+      "id": 12,
+      "status": "pending"
     }
   ]
 }

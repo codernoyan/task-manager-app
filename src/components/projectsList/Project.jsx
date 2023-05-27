@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 export default function Project({ project }) {
   const { projectName, colorClass } = project || {};
-  const [projecCheked, setProjectChecked] = useState(true);
+  const [projectChecked, setProjectChecked] = useState(true);
   const dispatch = useDispatch();
 
   const handleFilterProject = (e) => {
@@ -14,7 +14,7 @@ export default function Project({ project }) {
 
   return (
     <div className="checkbox-container">
-      <input onChange={handleFilterProject} checked={projecCheked} type="checkbox" className={colorClass} />
+      <input onChange={handleFilterProject} checked={projectChecked} type="checkbox" className={colorClass} />
       <p className="label">{projectName}</p>
     </div>
   )

@@ -1,9 +1,9 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useGetProjectsQuery } from "../../features/projects/projectsApi";
 import { useEditTaskMutation } from "../../features/tasks/tasksApi";
 import { useGetTeamQuery } from "../../features/team/teamApi";
-import { useNavigate } from "react-router-dom";
 import Error from "../ui/Error";
-import { useState } from "react";
 
 export default function Form({ task }) {
   const { data: team } = useGetTeamQuery();
@@ -23,16 +23,7 @@ export default function Form({ task }) {
 
   const handleEditTask = (e) => {
     e.preventDefault();
-    editTask({
-      id: id,
-      data: {
-        id: input.id,
-        taskName: input.taskName,
-        teamMember: JSON.parse(input.teamMember),
-        project: JSON.parse(input.project),
-        deadline: input.deadline
-      }
-    });
+   
     navigate('/');
   }
 
